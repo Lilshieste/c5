@@ -34,8 +34,8 @@ string PlaceDescriptionService::get(const string& url) const {
 
 string PlaceDescriptionService::createGetRequestUrl(
       const string& latitude, const string& longitude) const {
-   string server{"http://open.mapquestapi.com/"};
-   string document{"nominatim/v1/reverse"};
+   string server = "http://open.mapquestapi.com/";
+   string document = "nominatim/v1/reverse";
    return server + document + "?" +
           keyValue("format", "json") + "&" +
           keyValue("lat", latitude) + "&" +
