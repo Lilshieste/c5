@@ -24,8 +24,7 @@ public:
 // START:MakesHttpRequest
 TEST_F(APlaceDescriptionService, MakesHttpRequestToObtainAddress) {
    HttpStub httpStub;
-   string urlStart{
-      "http://open.mapquestapi.com/nominatim/v1/reverse?format=json&"};
+   string urlStart = "http://open.mapquestapi.com/nominatim/v1/reverse?format=json&";
    auto expectedURL = urlStart + 
       "lat=" + APlaceDescriptionService::ValidLatitude + "&" +
       "lon=" + APlaceDescriptionService::ValidLongitude;
@@ -33,7 +32,7 @@ TEST_F(APlaceDescriptionService, MakesHttpRequestToObtainAddress) {
    EXPECT_CALL(httpStub, initialize());
 // END_HIGHLIGHT
    EXPECT_CALL(httpStub, get(expectedURL));
-   PlaceDescriptionService service{&httpStub};
+   PlaceDescriptionService service = &httpStub;
 
    service.summaryDescription(ValidLatitude, ValidLongitude);
 }
