@@ -28,15 +28,14 @@ public:
 // START:MakesHttpRequest
 TEST_F(APlaceDescriptionService, MakesHttpRequestToObtainAddress) {
    HttpStub httpStub;
-   string urlStart{
-      "http://open.mapquestapi.com/nominatim/v1/reverse?format=json&"};
+   string urlStart = "http://open.mapquestapi.com/nominatim/v1/reverse?format=json&";
    auto expectedURL = urlStart + 
       "lat=" + APlaceDescriptionService::ValidLatitude + "&" +
       "lon=" + APlaceDescriptionService::ValidLongitude;
 // START_HIGHLIGHT
    EXPECT_CALL(httpStub, get(expectedURL));
 // END_HIGHLIGHT
-   PlaceDescriptionService service{&httpStub};
+   PlaceDescriptionService service = &httpStub;
 
    service.summaryDescription(ValidLatitude, ValidLongitude);
 }
