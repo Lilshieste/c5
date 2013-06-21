@@ -9,7 +9,7 @@ using namespace std;
 
 // START:PlaceDescriptionService
 PlaceDescriptionService::PlaceDescriptionService() 
-   : http_{make_shared<CurlHttp>()} {}
+   : http_(make_shared<CurlHttp>()) {}
 // ...
 // END:PlaceDescriptionService
 
@@ -43,8 +43,8 @@ shared_ptr<Http> PlaceDescriptionService::httpService() const {
 
 string PlaceDescriptionService::createGetRequestUrl(
       const string& latitude, const string& longitude) const {
-   string server{"http://open.mapquestapi.com/"};
-   string document{"nominatim/v1/reverse"};
+   string server = "http://open.mapquestapi.com/";
+   string document = "nominatim/v1/reverse";
    return server + document + "?" +
           keyValue("format", "json") + "&" +
           keyValue("lat", latitude) + "&" +
