@@ -7,7 +7,7 @@ using namespace Json;
 
 Address AddressExtractor::addressFrom(const string& json) const {
    Address address;
-   Value jsonAddress{jsonAddressFrom(json)};
+   Value jsonAddress = jsonAddressFrom(json);
    populate(address, jsonAddress);
    return address; 
 }

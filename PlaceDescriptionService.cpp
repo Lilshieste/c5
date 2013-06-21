@@ -8,7 +8,7 @@
 using namespace std;
 
 PlaceDescriptionService::PlaceDescriptionService(shared_ptr<HttpFactory> httpFactory) 
-   : httpFactory_{httpFactory} {}
+   : httpFactory_(httpFactory) {}
 
 string PlaceDescriptionService::summaryDescription(
       const string& latitude, const string& longitude) const {
@@ -36,8 +36,8 @@ string PlaceDescriptionService::get(const string& url) const {
 
 string PlaceDescriptionService::createGetRequestUrl(
       const string& latitude, const string& longitude) const {
-   string server{"http://open.mapquestapi.com/"};
-   string document{"nominatim/v1/reverse"};
+   string server = "http://open.mapquestapi.com/";
+   string document = "nominatim/v1/reverse";
    return server + document + "?" +
           keyValue("format", "json") + "&" +
           keyValue("lat", latitude) + "&" +
